@@ -199,3 +199,15 @@ h1{font-size:25px;margin:0}.status-pill{font-size:12px;background:rgba(255,255,2
   font-weight:700;
   border-radius:11px;
 }
+/* 층별 청사안내 전화번호 강조 */
+.floor-row a[href^="tel:"] {
+  font-weight: 800;
+  color: #1f5f99;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+/* 전화번호 앞 전화 아이콘도 같은 색으로 */
+.floor-row a[href^="tel:"]::before {
+  color: #1f5f99;
+}
