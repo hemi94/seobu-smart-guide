@@ -163,11 +163,6 @@ function smartSearch(){
     : `<div class="empty">적합한 안내를 찾지 못했습니다.<br>업무검색에서 핵심 단어로 다시 검색해 주세요.</div>`;
 }
 document.getElementById('smartSearchBtn').addEventListener('click',smartSearch);
-
-document.getElementById('homeSearchBtn').addEventListener('click',()=>{
-  const q=document.getElementById('homeSearch').value;
-  go('serviceView'); document.getElementById('serviceSearch').value=q; activeCategory='전체';
-  chips.querySelectorAll('.chip').forEach((x,i)=>x.classList.toggle('active',i===0)); renderServices();
 document.getElementById('homeSearchBtn').addEventListener('click',()=>{
   const q=document.getElementById('homeSearch').value;
   go('serviceView');
@@ -178,5 +173,7 @@ document.getElementById('homeSearchBtn').addEventListener('click',()=>{
 });
 
 document.getElementById('homeSearch').addEventListener('keydown',e=>{
-  if(e.key==='Enter') document.getElementById('homeSearchBtn').click();
+  if(e.key==='Enter'){
+    document.getElementById('homeSearchBtn').click();
+  }
 });
