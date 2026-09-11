@@ -66,19 +66,61 @@ function floorOrder(name){
   return map[name] ?? 99;
 }
 function renderFloors(){
-  const groups={};
-  D.floors.forEach(x=>{if(x['층']&&x['공간']) (groups[x['층']]??=[]).push(x)});
-  document.getElementById('floorResults').innerHTML=Object.keys(groups).sort((a,b)=>floorOrder(a)-floorOrder(b)).map(f=>{
-    const rows=groups[f].map(x=>{
-      const p=phoneHref(x['대표전화']);
-      return `<div class="floor-row"><strong>${esc(x['공간'])}</strong>
-        <div class="sub">${x['비고']?esc(x['비고']):''}</div>
-        <div class="meta">${x['대표전화']?`<span>☎ ${esc(x['대표전화'])}</span>`:''}${x['팩스']?`<span>팩스 ${esc(x['팩스'])}</span>`:''}</div>
-        ${p?`<div class="actions"><a class="call-btn" href="${p}">전화하기</a></div>`:''}
-      </div>`;
-    }).join('');
-    return `<section class="floor-group"><h3>${esc(f)}</h3>${rows}</section>`;
-  }).join('');
+  const groups = {};
+
+  D.floors.forEach(x => {
+    if (x['층'] && x['공간']) {
+      (groups[x['층']] ??= []).push(x);
+    }
+  });
+
+  document.getElementById('floorResults').innerHTML =
+    Object.keys(groups)
+      .sort((a,b) => floorOrder(a) - floorOrder(b))
+      .map(f => {
+
+        const rows = groups[f].map(x => {
+          const phone = phoneHref(x['대표전화']);
+
+          return `
+            <div class="floor-dept-row">
+              <div class="floor-dept-name">${esc(x['공간'])}</div>
+
+              <div class="floor-dept-contact">
+                ${
+                  x['대표전화']
+                    ? phone
+                      ? `<a class="floor-phone" href="${phone}">
+                           ☎ ${esc(x['대표전화'])}
+                         </a>`
+                      : `<span class="floor-phone">
+                           ☎ ${esc(x['대표전화'])}
+                         </span>`
+                    : ''
+                }
+
+                ${
+                  x['팩스']
+                    ? `<span class="floor-fax">
+                         팩스 ${esc(x['팩스'])}
+                       </span>`
+                    : ''
+                }
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        return `
+          <section class="floor-card">
+            <div class="floor-label">${esc(f)}</div>
+            <div class="floor-content">
+              ${rows}
+            </div>
+          </section>
+        `;
+      })
+      .join('');
 }
 renderFloors();
 
@@ -128,3 +170,97 @@ document.getElementById('homeSearchBtn').addEventListener('click',()=>{
   chips.querySelectorAll('.chip').forEach((x,i)=>x.classList.toggle('active',i===0)); renderServices();
 });
 document.getElementById('homeSearch').addEventListener('keydown',e=>{if(e.key==='Enter') document.getElementById('homeSearchBtn').click()});
+/* ===== 층별 청사안내 카드형 디자인 ===== */
+
+.floor-list{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.floor-card{
+  display:grid;
+  grid-template-columns:120px 1fr;
+  gap:22px;
+  background:#fff;
+  border:1px solid #dde5ef;
+  border-radius:22px;
+  padding:18px;
+  box-shadow:0 6px 18px rgba(24,52,82,.06);
+}
+
+.floor-label{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:140px;
+  background:#eaf3fb;
+  border-radius:18px;
+  color:#1f5f99;
+  font-size:34px;
+  font-weight:800;
+}
+
+.floor-content{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:10px;
+}
+
+.floor-dept-row{
+  display:grid;
+  grid-template-columns:minmax(140px,220px) 1fr;
+  align-items:center;
+  gap:16px;
+  padding:5px 0;
+}
+
+.floor-dept-name{
+  font-size:16px;
+  font-weight:700;
+  color:#172033;
+}
+
+.floor-dept-contact{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.floor-phone{
+  color:#1f5f99;
+  font-size:18px;
+  font-weight:800;
+  text-decoration:none;
+}
+
+.floor-fax{
+  color:#445066;
+  font-size:14px;
+  font-weight:600;
+}
+
+@media(max-width:600px){
+
+  .floor-card{
+    grid-template-columns:82px 1fr;
+    gap:14px;
+    padding:14px;
+  }
+
+  .floor-label{
+    min-height:110px;
+    font-size:27px;
+  }
+
+  .floor-dept-row{
+    grid-template-columns:1fr;
+    gap:4px;
+  }
+
+  .floor-phone{
+    font-size:16px;
+  }
+}
