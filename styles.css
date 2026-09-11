@@ -37,3 +37,130 @@ h1{font-size:25px;margin:0}.status-pill{font-size:12px;background:rgba(255,255,2
 .empty{background:#fff;border:1px dashed var(--line);border-radius:16px;padding:26px;text-align:center;color:var(--muted)}
 .note{font-size:12px;color:#8a6470;background:#fff5f7;border:1px solid #f1dce2;padding:10px;border-radius:10px;margin-top:10px}
 @media(max-width:430px){.quick-grid{grid-template-columns:1fr 1fr}.view{padding:14px}.hero{padding:18px}.topbar{padding:18px 16px}.quick-card{min-height:126px;padding:16px 13px}}
+/* ===== 스마트 청사안내 디자인 보정 ===== */
+
+.quick-card{
+  transition:transform .15s ease, box-shadow .15s ease;
+  border:1px solid #e5edf5;
+}
+
+.quick-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 24px rgba(24,52,82,.12);
+}
+
+.quick-icon{
+  width:42px;
+  height:42px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#eaf3fb;
+  border-radius:12px;
+  font-size:23px;
+  margin-bottom:12px;
+}
+
+.quick-card strong{
+  font-size:16px;
+  font-weight:700;
+}
+
+.quick-card small{
+  font-size:13px;
+  line-height:1.4;
+}
+
+.service-card,
+.contact-card{
+  border:1px solid #e2eaf3;
+  box-shadow:0 5px 14px rgba(24,52,82,.06);
+}
+
+.service-card h3,
+.contact-card h3{
+  font-size:18px;
+  font-weight:750;
+}
+
+.dept{
+  font-size:14px;
+  margin-top:3px;
+}
+
+.meta{
+  font-size:14px;
+  line-height:1.5;
+}
+
+.call-btn{
+  min-height:42px;
+  padding:10px 16px;
+  font-size:14px;
+}
+
+.outline-btn{
+  min-height:42px;
+  padding:10px 16px;
+  font-size:14px;
+}
+
+.search-wrap{
+  box-shadow:0 2px 8px rgba(24,52,82,.04);
+}
+
+.search-wrap input{
+  font-size:15px;
+}
+
+.search-wrap button,
+.primary-btn{
+  min-height:42px;
+}
+
+.bottom-nav{
+  box-shadow:0 -4px 14px rgba(24,52,82,.06);
+}
+
+.nav-btn{
+  padding:7px 2px;
+}
+
+.nav-btn span{
+  font-size:11px;
+}
+
+@media(max-width:430px){
+
+  .topbar{
+    padding:18px 16px;
+  }
+
+  h1{
+    font-size:23px;
+  }
+
+  .hero h2,
+  .section-head h2{
+    font-size:20px;
+  }
+
+  .quick-grid{
+    gap:10px;
+  }
+
+  .quick-card{
+    min-height:132px;
+    padding:16px 14px;
+  }
+
+  .service-card,
+  .contact-card{
+    padding:15px;
+  }
+
+  .call-btn,
+  .outline-btn{
+    flex:1;
+  }
+}
