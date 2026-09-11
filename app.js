@@ -168,5 +168,118 @@ document.getElementById('homeSearchBtn').addEventListener('click',()=>{
   const q=document.getElementById('homeSearch').value;
   go('serviceView'); document.getElementById('serviceSearch').value=q; activeCategory='전체';
   chips.querySelectorAll('.chip').forEach((x,i)=>x.classList.toggle('active',i===0)); renderServices();
+  /* ===== 층별 청사안내 완성형 디자인 ===== */
+
+#floorResults{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+.floor-card{
+  display:grid;
+  grid-template-columns:96px 1fr;
+  gap:18px;
+  background:#fff;
+  border:1px solid #dbe4ee;
+  border-radius:18px;
+  padding:16px;
+  box-shadow:0 4px 14px rgba(24,52,82,.06);
+}
+
+.floor-label{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:120px;
+  border-radius:14px;
+  background:#eaf3fb;
+  color:#1f5f99;
+  font-size:26px;
+  font-weight:800;
+}
+
+.floor-content{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.floor-dept-row{
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:16px;
+  align-items:center;
+  padding:11px 0;
+  border-bottom:1px solid #edf1f5;
+}
+
+.floor-dept-row:last-child{
+  border-bottom:none;
+}
+
+.floor-dept-name{
+  font-size:16px;
+  font-weight:700;
+  color:#172033;
+}
+
+.floor-dept-contact{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:14px;
+}
+
+.floor-phone{
+  color:#1f5f99 !important;
+  font-size:17px;
+  font-weight:800;
+  text-decoration:none;
+}
+
+.floor-fax{
+  color:#445066;
+  font-size:14px;
+  font-weight:600;
+}
+
+/* 기존 층별 스타일 영향 제거 */
+.floor-group,
+.floor-row{
+  margin:0;
+}
+
+.floor-group h3{
+  display:none;
+}
+
+@media(max-width:600px){
+
+  .floor-card{
+    grid-template-columns:72px 1fr;
+    gap:12px;
+    padding:13px;
+  }
+
+  .floor-label{
+    min-height:100px;
+    font-size:22px;
+  }
+
+  .floor-dept-row{
+    grid-template-columns:1fr;
+    gap:5px;
+    padding:9px 0;
+  }
+
+  .floor-dept-name{
+    font-size:15px;
+  }
+
+  .floor-phone{
+    font-size:15px;
+  }
+}
 });
 document.getElementById('homeSearch').addEventListener('keydown',e=>{if(e.key==='Enter') document.getElementById('homeSearchBtn').click()});
