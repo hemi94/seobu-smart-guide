@@ -173,3 +173,29 @@ h1{font-size:25px;margin:0}.status-pill{font-size:12px;background:rgba(255,255,2
 .chips::-webkit-scrollbar{
   display:none;
 }
+/* 전화번호·위치 가독성 강화 */
+.meta{
+  margin-top:12px;
+  font-size:14px;
+  color:#4b596b;
+}
+
+.meta span{
+  padding:3px 0;
+}
+
+/* 전화번호는 조금 더 진하게 */
+.meta span:last-child{
+  color:#1f5f99;
+  font-weight:700;
+  font-size:15px;
+}
+
+/* 전화하기 버튼 강화 */
+.call-btn{
+  min-height:44px;
+  padding:11px 16px;
+  font-size:14px;
+  font-weight:700;
+  border-radius:11px;
+}
