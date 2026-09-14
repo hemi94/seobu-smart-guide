@@ -993,3 +993,162 @@ h1{font-size:25px;margin:0}.status-pill{font-size:12px;background:rgba(255,255,2
     margin-top:12px !important;
   }
 }
+/* ===== 연락처 화면 실제 구조 최종 보정 ===== */
+
+/* 주요 연락처 표시 */
+#contactView .contact-badge{
+  display:inline-block;
+  margin-bottom:7px;
+  padding:5px 9px;
+  background:#eaf3ff;
+  color:#1f5f99;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:800;
+}
+
+/* 카드 윗부분 */
+#contactView .contact-card-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:15px;
+}
+
+/* 카드 제목 */
+#contactView .contact-card h3{
+  margin:0 !important;
+  font-size:20px !important;
+  font-weight:850 !important;
+  color:#172033 !important;
+}
+
+/* 센터명·담당팀 */
+#contactView .contact-sub{
+  margin-top:5px;
+  color:#68778a;
+  font-size:13px;
+  font-weight:600;
+}
+
+/* 위치 */
+#contactView .contact-location{
+  flex-shrink:0;
+  padding:6px 9px;
+  background:#f3f7fb;
+  border-radius:9px;
+  color:#607086;
+  font-size:13px;
+}
+
+/* ★ 전화번호 영역 */
+#contactView .contact-number-area{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 18px;
+  margin-top:15px;
+}
+
+/* ★ 전화번호 */
+#contactView .contact-number{
+  display:inline-flex;
+  align-items:center;
+  color:#1768b2 !important;
+  font-size:19px !important;
+  font-weight:850 !important;
+  line-height:1.4;
+  text-decoration:none !important;
+}
+
+/* 방문한 링크도 보라색으로 변하지 않게 */
+#contactView .contact-number:visited{
+  color:#1768b2 !important;
+}
+
+/* 마우스 올렸을 때 */
+#contactView .contact-number:hover{
+  color:#004a99 !important;
+  text-decoration:none !important;
+}
+
+/* 팩스 */
+#contactView .contact-fax{
+  margin-top:9px;
+  color:#66758a;
+  font-size:13px;
+  font-weight:600;
+}
+
+/* 긴급재난 등 비고 */
+#contactView .contact-note{
+  margin-top:10px;
+  padding-top:10px;
+  border-top:1px solid #edf2f7;
+  color:#66758a;
+  font-size:13px;
+}
+
+/* 전화 버튼 영역 */
+#contactView .contact-actions{
+  margin-top:14px;
+}
+
+/* ★ 전화하기 버튼 */
+#contactView .contact-call-btn{
+  display:inline-flex !important;
+  align-items:center;
+  justify-content:center;
+
+  min-height:42px;
+  padding:10px 17px;
+
+  background:#1f5f99 !important;
+  color:#ffffff !important;
+
+  border-radius:11px;
+  text-decoration:none !important;
+
+  font-size:14px;
+  font-weight:800;
+
+  box-shadow:0 3px 9px rgba(31,95,153,.18);
+}
+
+/* 방문 후에도 흰색 유지 */
+#contactView .contact-call-btn:visited{
+  color:#ffffff !important;
+}
+
+/* 버튼 마우스 효과 */
+#contactView .contact-call-btn:hover{
+  background:#174e80 !important;
+  color:#ffffff !important;
+  transform:translateY(-1px);
+}
+
+/* 대표전화·민원실은 살짝 강조 */
+#contactView .contact-main{
+  border-color:#c7dced !important;
+}
+
+/* 모바일 */
+@media(max-width:600px){
+
+  #contactView .contact-card-top{
+    flex-direction:column;
+    gap:7px;
+  }
+
+  #contactView .contact-location{
+    align-self:flex-start;
+  }
+
+  #contactView .contact-number-area{
+    flex-direction:column;
+    gap:4px;
+  }
+
+  #contactView .contact-number{
+    font-size:18px !important;
+  }
+}
