@@ -263,3 +263,19 @@ document.getElementById('homeSearch').addEventListener('keydown',e=>{
     document.getElementById('homeSearchBtn').click();
   }
 });
+/* 스마트폰 프레임 현재시간 */
+function updatePhoneTime(){
+  const el = document.getElementById('phoneTime');
+  if(!el) return;
+
+  const now = new Date();
+
+  el.textContent = now.toLocaleTimeString('ko-KR',{
+    hour:'2-digit',
+    minute:'2-digit',
+    hour12:false
+  });
+}
+
+updatePhoneTime();
+setInterval(updatePhoneTime, 30000);
