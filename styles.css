@@ -555,3 +555,12 @@ h1{font-size:25px;margin:0}.status-pill{font-size:12px;background:rgba(255,255,2
   fill:none !important;
   stroke:#2f6fec !important;
 }
+.quick-icon svg{
+  width:24px;
+  height:24px;
+  fill:none;
+  stroke:#2563eb;
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
