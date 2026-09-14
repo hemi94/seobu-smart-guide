@@ -1329,3 +1329,20 @@ h1{font-size:25px;margin:0}.status-pill{font-size:12px;background:rgba(255,255,2
     padding-bottom:18px;
   }
 }
+/* ===== 휴대폰 상단 상태바 정리 ===== */
+
+@media (min-width:900px){
+
+  .app-shell::after{
+    content:"11:39";
+    top:18px;
+    left:28px;
+    right:auto;
+
+    font-size:13px;
+    font-weight:800;
+    color:#111;
+
+    letter-spacing:0;
+  }
+}
