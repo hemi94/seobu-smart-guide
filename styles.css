@@ -624,3 +624,27 @@ h1{font-size:25px;margin:0}.status-pill{font-size:12px;background:rgba(255,255,2
   color:#003f7d !important;
   font-weight:900 !important;
 }
+/* ===== 메인 메뉴 클릭 강조 효과 ===== */
+
+.quick-card:active{
+  background-color:#d6e9ff !important;
+  border-color:#4d96d8 !important;
+  transform:translateY(-2px) scale(0.98) !important;
+  box-shadow:0 6px 16px rgba(0,63,125,0.25) !important;
+}
+
+/* 클릭할 때 메인 제목 */
+.quick-card:active strong{
+  color:#004a99 !important;
+  font-weight:900 !important;
+}
+
+/* 클릭할 때 아이콘 영역 */
+.quick-card:active .quick-icon{
+  background-color:#b9dcff !important;
+}
+
+/* 클릭할 때 오른쪽 화살표 */
+.quick-card:active::after{
+  color:#004a99 !important;
+}
