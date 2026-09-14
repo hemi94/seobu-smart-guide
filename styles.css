@@ -837,3 +837,159 @@ h1{font-size:25px;margin:0}.status-pill{font-size:12px;background:rgba(255,255,2
     flex:1;
   }
 }
+/* ===== 대표번호·센터 연락처 최종 디자인 ===== */
+
+#contactView .contact-card{
+  padding:20px !important;
+  border-radius:18px !important;
+  border:1px solid #dce7f2 !important;
+  background:#ffffff !important;
+  box-shadow:0 5px 16px rgba(24,52,82,.06) !important;
+  transition:all .2s ease;
+}
+
+/* 카드에 마우스를 올렸을 때 */
+#contactView .contact-card:hover{
+  background:#f2f8ff !important;
+  border-color:#9fc6ea !important;
+  transform:translateY(-4px);
+  box-shadow:0 12px 26px rgba(31,95,153,.16) !important;
+}
+
+/* 대표전화·민원실 제목 */
+#contactView .contact-card h3{
+  margin:0 0 10px !important;
+  font-size:20px !important;
+  font-weight:850 !important;
+  color:#172033 !important;
+}
+
+/* 담당팀 등의 작은 설명 */
+#contactView .contact-card .dept{
+  margin:0 0 8px !important;
+  font-size:13px !important;
+  color:#607086 !important;
+}
+
+/* 전화번호가 들어 있는 영역 */
+#contactView .floor-dept-contact{
+  display:flex !important;
+  flex-wrap:wrap !important;
+  gap:8px 18px !important;
+  margin-top:8px !important;
+}
+
+/* ★ 전화번호 크게 강조 */
+#contactView .floor-phone{
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:5px;
+  color:#1768b2 !important;
+  font-size:18px !important;
+  font-weight:850 !important;
+  text-decoration:none !important;
+}
+
+/* 전화번호에 마우스를 올렸을 때 */
+#contactView a.floor-phone:hover{
+  color:#004a99 !important;
+}
+
+/* 위치·팩스 */
+#contactView .meta{
+  display:flex !important;
+  flex-wrap:wrap !important;
+  gap:7px 16px !important;
+  margin-top:10px !important;
+  color:#66758a !important;
+  font-size:13px !important;
+}
+
+#contactView .meta span{
+  color:#66758a !important;
+  font-size:13px !important;
+  font-weight:600 !important;
+}
+
+/* 긴급재난 등 안내 */
+#contactView .detail{
+  margin-top:11px !important;
+  padding-top:10px !important;
+  border-top:1px solid #edf2f7;
+  color:#6a7485 !important;
+  font-size:13px !important;
+}
+
+/* 버튼 영역 */
+#contactView .actions{
+  display:flex !important;
+  flex-wrap:wrap !important;
+  gap:8px !important;
+  margin-top:14px !important;
+}
+
+/* 전화하기 */
+#contactView .call-btn{
+  display:inline-flex !important;
+  align-items:center;
+  justify-content:center;
+  background:#1f5f99 !important;
+  color:#ffffff !important;
+  text-decoration:none !important;
+  border-radius:11px !important;
+  padding:10px 17px !important;
+  min-height:42px;
+  font-size:14px !important;
+  font-weight:800 !important;
+}
+
+/* 전화하기 마우스 효과 */
+#contactView .call-btn:hover{
+  background:#174e80 !important;
+  transform:translateY(-1px);
+}
+
+/* 두 번째 번호 */
+#contactView .outline-btn{
+  display:inline-flex !important;
+  align-items:center;
+  justify-content:center;
+  background:#ffffff !important;
+  color:#1f5f99 !important;
+  text-decoration:none !important;
+  border:1px solid #bfd3e7 !important;
+  border-radius:11px !important;
+  padding:10px 15px !important;
+  min-height:42px;
+  font-size:14px !important;
+  font-weight:750 !important;
+}
+
+#contactView .outline-btn:hover{
+  background:#eaf4ff !important;
+}
+
+/* 모바일 */
+@media(max-width:600px){
+
+  #contactView .contact-card{
+    padding:17px !important;
+  }
+
+  #contactView .contact-card h3{
+    font-size:19px !important;
+  }
+
+  #contactView .floor-phone{
+    font-size:17px !important;
+  }
+
+  #contactView .floor-dept-contact{
+    flex-direction:column !important;
+    gap:5px !important;
+  }
+
+  #contactView .actions{
+    margin-top:12px !important;
+  }
+}
