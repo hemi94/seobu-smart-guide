@@ -1596,3 +1596,256 @@ h1{font-size:25px;margin:0}.status-pill{font-size:12px;background:rgba(255,255,2
   border-color:#b7d0e8 !important;
   box-shadow:0 10px 24px rgba(31,95,153,.10) !important;
 }
+/* ========================================
+   층별 청사안내 - 앱형 디자인
+======================================== */
+
+#floorView .floor-list{
+  display:block;
+}
+
+/* 층 선택 탭 */
+#floorView .floor-tabs{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+
+  margin:14px 0 20px;
+}
+
+#floorView .floor-tab{
+  border:0;
+
+  padding:8px 13px;
+
+  background:#e9edf2;
+  color:#4f5d70;
+
+  border-radius:9px;
+
+  font-size:13px;
+  font-weight:700;
+
+  transition:
+    background-color .18s ease,
+    color .18s ease,
+    transform .18s ease;
+}
+
+#floorView .floor-tab:hover{
+  background:#dce9f7;
+  color:#1f5f99;
+}
+
+#floorView .floor-tab.active{
+  background:#256be8;
+  color:#fff;
+}
+
+#floorView .floor-tab:active{
+  transform:scale(.96);
+}
+
+
+/* 층별 영역 */
+#floorView .floor-section{
+  margin-bottom:24px;
+}
+
+
+/* 4F 4층 (3개...) 제목 */
+#floorView .floor-section-head{
+  display:flex;
+  align-items:center;
+  gap:7px;
+
+  margin-bottom:10px;
+
+  color:#172033;
+}
+
+#floorView .floor-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  min-width:30px;
+  height:27px;
+
+  padding:0 7px;
+
+  border-radius:8px;
+
+  background:#276bea;
+  color:#fff;
+
+  font-size:12px;
+  font-weight:850;
+}
+
+#floorView .floor-section-head strong{
+  font-size:18px;
+  font-weight:850;
+}
+
+#floorView .floor-count{
+  color:#6d7887;
+  font-size:12px;
+}
+
+
+/* 시설 목록 카드 */
+#floorView .floor-space-list{
+  overflow:hidden;
+
+  background:#fff;
+
+  border:1px solid #e2e9f1;
+  border-radius:16px;
+
+  box-shadow:0 5px 15px rgba(24,52,82,.05);
+}
+
+
+/* 시설 한 줄 */
+#floorView .floor-space-item{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:12px;
+
+  min-height:78px;
+
+  padding:15px 14px;
+
+  border-bottom:1px solid #edf1f5;
+}
+
+#floorView .floor-space-item:last-child{
+  border-bottom:0;
+}
+
+
+/* 시설명 + 전화번호 */
+#floorView .floor-space-info{
+  flex:1;
+  min-width:0;
+}
+
+#floorView .floor-space-title{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+
+  gap:6px;
+
+  color:#172033;
+
+  font-size:16px;
+  font-weight:800;
+}
+
+
+/* 비고 태그 */
+#floorView .floor-space-tag{
+  display:inline-block;
+
+  max-width:160px;
+
+  padding:3px 6px;
+
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+
+  background:#e8f0ff;
+  color:#276bea;
+
+  border-radius:999px;
+
+  font-size:10px;
+  font-weight:700;
+}
+
+
+/* 전화·팩스 */
+#floorView .floor-space-contact{
+  margin-top:7px;
+
+  color:#69788b;
+
+  font-size:12px;
+  line-height:1.5;
+
+  word-break:keep-all;
+}
+
+
+/* 우측 전화 버튼 */
+#floorView .floor-call-btn{
+  flex:0 0 auto;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  width:38px;
+  height:38px;
+
+  background:#dce8ff;
+  color:#276bea !important;
+
+  border-radius:10px;
+
+  text-decoration:none !important;
+
+  font-size:17px;
+  font-weight:800;
+
+  transition:
+    background-color .18s ease,
+    transform .18s ease;
+}
+
+#floorView .floor-call-btn:hover{
+  background:#c9dcff;
+  transform:translateY(-1px);
+}
+
+
+/* 모바일 */
+@media(max-width:600px){
+
+  #floorView .floor-tabs{
+    gap:6px;
+    margin-bottom:18px;
+  }
+
+  #floorView .floor-tab{
+    padding:8px 11px;
+    font-size:12px;
+  }
+
+  #floorView .floor-section-head strong{
+    font-size:17px;
+  }
+
+  #floorView .floor-space-item{
+    min-height:74px;
+    padding:14px 13px;
+  }
+
+  #floorView .floor-space-title{
+    font-size:15px;
+  }
+
+  #floorView .floor-space-contact{
+    font-size:12px;
+  }
+
+  #floorView .floor-call-btn{
+    width:36px;
+    height:36px;
+  }
+}
