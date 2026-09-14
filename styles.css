@@ -700,3 +700,140 @@ h1{font-size:25px;margin:0}.status-pill{font-size:12px;background:rgba(255,255,2
 .quick-card:active::after{
   color:#003b7a !important;
 }
+/* ===== 대표번호·센터 연락처 화면 디자인 ===== */
+
+#contactView .section-head h2{
+  font-size:22px;
+  font-weight:800;
+  color:#172033;
+}
+
+#contactView .contact-card{
+  background:#ffffff;
+  border:1px solid #dfe8f2;
+  border-radius:18px;
+  padding:18px;
+  box-shadow:0 5px 16px rgba(24,52,82,.06);
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    background-color .2s ease,
+    border-color .2s ease;
+}
+
+/* 카드에 마우스 올렸을 때 */
+#contactView .contact-card:hover{
+  background:#f4f9ff;
+  border-color:#a9cbed;
+  transform:translateY(-4px);
+  box-shadow:0 12px 26px rgba(31,95,153,.16);
+}
+
+/* 카드 제목 */
+#contactView .contact-card h3{
+  margin:0 0 6px;
+  font-size:19px;
+  font-weight:850;
+  color:#172033;
+}
+
+/* 대표전화, 센터 등의 보조문구 */
+#contactView .contact-card .dept{
+  color:#2b6da8;
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:10px;
+}
+
+/* 위치, 전화번호, 팩스 영역 */
+#contactView .contact-card .meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 14px;
+  margin-top:10px;
+  color:#506074;
+  font-size:14px;
+}
+
+/* 연락처 숫자 강조 */
+#contactView .contact-card .meta span{
+  font-weight:600;
+}
+
+/* 전화번호 강조 */
+#contactView .contact-card .meta span:nth-child(n+2){
+  color:#1f5f99;
+  font-weight:800;
+}
+
+/* 전화하기 버튼 */
+#contactView .call-btn{
+  background:#1f5f99;
+  color:#fff;
+  border-radius:11px;
+  min-height:42px;
+  padding:10px 16px;
+  font-size:14px;
+  font-weight:800;
+  box-shadow:0 3px 8px rgba(31,95,153,.15);
+}
+
+/* 두 번째 번호 버튼 */
+#contactView .outline-btn{
+  background:#fff;
+  border:1px solid #cfddea;
+  color:#1f5f99;
+  border-radius:11px;
+  min-height:42px;
+  padding:10px 16px;
+  font-size:14px;
+  font-weight:750;
+}
+
+/* 버튼 마우스 효과 */
+#contactView .call-btn:hover{
+  background:#174e80;
+}
+
+#contactView .outline-btn:hover{
+  background:#eef6ff;
+  border-color:#9fc6ea;
+}
+
+/* 긴급재난 등의 비고 */
+#contactView .detail{
+  margin-top:10px;
+  padding-top:10px;
+  border-top:1px solid #edf1f5;
+  color:#6a7485;
+  font-size:13px;
+}
+
+/* 모바일 */
+@media(max-width:600px){
+
+  #contactView .contact-card{
+    padding:16px;
+    border-radius:16px;
+  }
+
+  #contactView .contact-card h3{
+    font-size:18px;
+  }
+
+  #contactView .contact-card .meta{
+    flex-direction:column;
+    gap:5px;
+  }
+
+  #contactView .actions{
+    display:flex;
+    gap:8px;
+  }
+
+  #contactView .call-btn,
+  #contactView .outline-btn{
+    flex:1;
+  }
+}
