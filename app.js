@@ -125,21 +125,107 @@ function renderFloors(){
 renderFloors();
 
 function renderContacts(){
-  const q=document.getElementById('contactSearch').value.trim().toLowerCase();
-  const list=D.contacts.filter(x=>{
-    const t=[x['부서/공간'],x['직위·팀'],x['외부전화1'],x['외부전화2'],x['위치/안내']].filter(Boolean).join(' ').toLowerCase();
-    return !q||t.includes(q);
+  const q = document.getElementById('contactSearch').value.trim().toLowerCase();
+
+  const list = D.contacts.filter(x => {
+    const t = [
+      x['부서/공간'],
+      x['직위·팀'],
+      x['외부전화1'],
+      x['외부전화2'],
+      x['팩스'],
+      x['위치/안내'],
+      x['비고']
+    ].filter(Boolean).join(' ').toLowerCase();
+
+    return !q || t.includes(q);
   });
-  document.getElementById('contactResults').innerHTML=list.length?list.map(x=>{
-    const p1=phoneHref(x['외부전화1']), p2=phoneHref(x['외부전화2']);
-    return `<article class="contact-card">
-      <h3>${esc(x['부서/공간'])}</h3>
-      <div class="dept">${esc(x['직위·팀']||'')}</div>
-      <div class="meta">${x['위치/안내']?`<span>📍 ${esc(x['위치/안내'])}</span>`:''}${x['외부전화1']?`<span>☎ ${esc(x['외부전화1'])}</span>`:''}${x['외부전화2']?`<span>☎ ${esc(x['외부전화2'])}</span>`:''}${x['팩스']?`<span>팩스 ${esc(x['팩스'])}</span>`:''}</div>
-      <div class="actions">${p1?`<a class="call-btn" href="${p1}">전화하기</a>`:''}${p2?`<a class="outline-btn" href="${p2}">두 번째 번호</a>`:''}</div>
-      ${x['비고']?`<div class="detail">${esc(x['비고'])}</div>`:''}
-    </article>`;
-  }).join(''):`<div class="empty">검색 결과가 없습니다.</div>`;
+
+  document.getElementById('contactResults').innerHTML = list.length
+    ? list.map(x => {
+
+        const p1 = phoneHref(x['외부전화1']);
+        const p2 = phoneHref(x['외부전화2']);
+
+        const name = x['부서/공간'] || '';
+        const isMain = name === '대표' || name === '민원실';
+
+        return `
+          <article class="contact-card ${isMain ? 'contact-main' : ''}">
+
+            <div class="contact-card-top">
+              <div>
+                ${isMain ? '<span class="contact-badge">주요 연락처</span>' : ''}
+                <h3>${esc(name === '대표' ? '대표전화' : name)}</h3>
+
+                ${
+                  x['직위·팀'] && x['직위·팀'] !== '대표전화'
+                    ? `<div class="contact-sub">${esc(x['직위·팀'])}</div>`
+                    : ''
+                }
+              </div>
+
+              ${
+                x['위치/안내']
+                  ? `<div class="contact-location">📍 ${esc(x['위치/안내'])}</div>`
+                  : ''
+              }
+            </div>
+
+            <div class="contact-number-area">
+
+              ${
+                x['외부전화1']
+                  ? p1
+                    ? `<a class="contact-number" href="${p1}">
+                         ☎ ${esc(x['외부전화1'])}
+                       </a>`
+                    : `<div class="contact-number contact-number-text">
+                         ☎ ${esc(x['외부전화1'])}
+                       </div>`
+                  : ''
+              }
+
+              ${
+                x['외부전화2']
+                  ? p2
+                    ? `<a class="contact-number contact-number-second" href="${p2}">
+                         ☎ ${esc(x['외부전화2'])}
+                       </a>`
+                    : `<div class="contact-number contact-number-second">
+                         ☎ ${esc(x['외부전화2'])}
+                       </div>`
+                  : ''
+              }
+
+            </div>
+
+            ${
+              x['팩스']
+                ? `<div class="contact-fax">팩스 ${esc(x['팩스'])}</div>`
+                : ''
+            }
+
+            ${
+              x['비고']
+                ? `<div class="contact-note">${esc(x['비고'])}</div>`
+                : ''
+            }
+
+            ${
+              p1
+                ? `<div class="contact-actions">
+                     <a class="contact-call-btn" href="${p1}">
+                       ☎ 전화하기
+                     </a>
+                   </div>`
+                : ''
+            }
+
+          </article>
+        `;
+      }).join('')
+    : `<div class="empty">검색 결과가 없습니다.</div>`;
 }
 document.getElementById('contactSearch').addEventListener('input',renderContacts);
 renderContacts();
