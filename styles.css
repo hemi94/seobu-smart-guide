@@ -580,3 +580,35 @@ h1{font-size:25px;margin:0}.status-pill{font-size:12px;background:rgba(255,255,2
   background:#eef5fb;
   border-radius:10px;
 }
+/* ===== 메인 메뉴 카드 마우스 오버 효과 ===== */
+.quick-card{
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    background-color 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.quick-card:hover{
+  background:#f0f7ff;
+  border-color:#b9d6f2;
+  transform:translateY(-5px);
+  box-shadow:0 12px 28px rgba(31,95,153,0.18);
+}
+
+/* 아이콘도 함께 강조 */
+.quick-card:hover .quick-icon{
+  background:#dceeff;
+  transform:scale(1.08);
+}
+
+.quick-icon{
+  transition:
+    background-color 0.22s ease,
+    transform 0.22s ease;
+}
+
+/* 오른쪽 화살표도 파란색으로 */
+.quick-card:hover::after{
+  color:#1f5f99;
+}
