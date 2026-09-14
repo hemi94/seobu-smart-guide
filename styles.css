@@ -1152,3 +1152,67 @@ h1{font-size:25px;margin:0}.status-pill{font-size:12px;background:rgba(255,255,2
     font-size:18px !important;
   }
 }
+/* ===== PC 화면용 스마트폰 프레임 ===== */
+
+@media (min-width: 900px){
+
+  body{
+    background:#edf5fb;
+    padding:28px 0;
+  }
+
+  .app-shell{
+    position:relative;
+
+    width:430px;
+    max-width:430px;
+    min-height:900px;
+
+    margin:0 auto;
+
+    background:#f4f7fb;
+
+    /* 휴대폰 검정 테두리 */
+    border:6px solid #111;
+
+    /* 바깥 파란 테두리 */
+    outline:3px solid #2f6fec;
+    outline-offset:2px;
+
+    border-radius:48px;
+
+    box-shadow:
+      0 18px 45px rgba(24,52,82,.20);
+
+    padding-top:38px;
+  }
+
+  /* 상단 검정 다이내믹 아일랜드 */
+  .app-shell::before{
+    content:"";
+    position:absolute;
+
+    top:12px;
+    left:50%;
+    transform:translateX(-50%);
+
+    width:118px;
+    height:30px;
+
+    background:#050505;
+    border-radius:20px;
+
+    z-index:100;
+  }
+
+  /* 아래 메뉴도 휴대폰 폭에 맞춤 */
+  .bottom-nav{
+    width:418px;
+    max-width:418px;
+
+    left:50%;
+    transform:translateX(-50%);
+
+    border-radius:0 0 39px 39px;
+  }
+}
