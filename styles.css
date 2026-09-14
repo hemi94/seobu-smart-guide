@@ -612,3 +612,10 @@ h1{font-size:25px;margin:0}.status-pill{font-size:12px;background:rgba(255,255,2
 .quick-card:hover::after{
   color:#1f5f99;
 }
+/* 메인 메뉴 제목 강조 */
+.quick-card strong{
+  font-size:19px !important;
+  font-weight:800 !important;
+  line-height:1.35;
+  color:#172033;
+}
