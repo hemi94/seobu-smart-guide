@@ -648,3 +648,55 @@ h1{font-size:25px;margin:0}.status-pill{font-size:12px;background:rgba(255,255,2
 .quick-card:active::after{
   color:#004a99 !important;
 }
+/* ===== 메인 메뉴 제목 + 카드 강조 최종 효과 ===== */
+
+/* 기본 제목 */
+.quick-card strong{
+  font-size:19px !important;
+  font-weight:800 !important;
+  color:#172033 !important;
+  transition:color 0.2s ease, font-weight 0.2s ease;
+}
+
+/* 마우스를 올렸을 때 */
+.quick-card:hover{
+  background-color:#e8f3ff !important;
+  border-color:#8ebce8 !important;
+  transform:translateY(-5px) !important;
+  box-shadow:0 12px 28px rgba(31,95,153,0.20) !important;
+}
+
+.quick-card:hover strong{
+  color:#0054a6 !important;
+  font-weight:900 !important;
+}
+
+.quick-card:hover .quick-icon{
+  background-color:#d3e9ff !important;
+  transform:scale(1.08);
+}
+
+.quick-card:hover::after{
+  color:#0054a6 !important;
+}
+
+/* 실제로 누르는 순간 */
+.quick-card:active{
+  background-color:#cfe5ff !important;
+  border-color:#438bcf !important;
+  transform:translateY(-1px) scale(0.98) !important;
+  box-shadow:0 5px 14px rgba(0,63,125,0.28) !important;
+}
+
+.quick-card:active strong{
+  color:#003b7a !important;
+  font-weight:900 !important;
+}
+
+.quick-card:active .quick-icon{
+  background-color:#add5ff !important;
+}
+
+.quick-card:active::after{
+  color:#003b7a !important;
+}
