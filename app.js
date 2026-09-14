@@ -45,12 +45,49 @@ function renderServiceCard(s){
 
 const categories=['전체',...new Set(D.services.map(x=>x['대분류']).filter(Boolean))];
 const chips=document.getElementById('categoryChips');
-chips.innerHTML=categories.map(c=>`<button class="chip ${c==='전체'?'active':''}" data-cat="${esc(c)}">${esc(c)}</button>`).join('');
-chips.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{
-  activeCategory=b.dataset.cat;
-  chips.querySelectorAll('.chip').forEach(x=>x.classList.toggle('active',x===b));
-  renderServices();
-}));
+
+let categoryExpanded = false;
+
+function renderCategoryChips(){
+  const mainCategories = categories.slice(0,4);
+  const hiddenCategories = categories.slice(4);
+
+  const visibleCategories = categoryExpanded
+    ? categories
+    : mainCategories;
+
+  chips.innerHTML =
+    visibleCategories.map(c=>
+      `<button class="chip ${c===activeCategory?'active':''}" data-cat="${esc(c)}">
+        ${esc(c)}
+      </button>`
+    ).join('')
+    +
+    (hiddenCategories.length
+      ? `<button class="chip more-chip" id="categoryMoreBtn">
+          ${categoryExpanded ? '접기 ▲' : '더보기 ▼'}
+        </button>`
+      : '');
+
+  chips.querySelectorAll('[data-cat]').forEach(b=>{
+    b.addEventListener('click',()=>{
+      activeCategory=b.dataset.cat;
+      renderCategoryChips();
+      renderServices();
+    });
+  });
+
+  const moreBtn=document.getElementById('categoryMoreBtn');
+
+  if(moreBtn){
+    moreBtn.addEventListener('click',()=>{
+      categoryExpanded=!categoryExpanded;
+      renderCategoryChips();
+    });
+  }
+}
+
+renderCategoryChips();
 
 function renderServices(){
   const q=document.getElementById('serviceSearch').value.trim().toLowerCase();
