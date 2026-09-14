@@ -564,3 +564,19 @@ h1{font-size:25px;margin:0}.status-pill{font-size:12px;background:rgba(255,255,2
   stroke-linecap:round;
   stroke-linejoin:round;
 }
+/* 메인 카드 클릭 효과 */
+.quick-card:active{
+  background:#eaf3ff;
+  border-color:#b9d3f2;
+  transform:scale(0.98);
+}
+
+/* 클릭 시 아이콘 영역도 살짝 진하게 */
+.quick-card:active .quick-icon{
+  background:#d9eaff;
+}
+.nav-btn:active{
+  color:#1f5f99;
+  background:#eef5fb;
+  border-radius:10px;
+}
