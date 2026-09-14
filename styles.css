@@ -454,3 +454,50 @@ h1{font-size:25px;margin:0}.status-pill{font-size:12px;background:rgba(255,255,2
     font-size:12px;
   }
 }
+/* ===== 상단 스마트 청사안내 헤더 ===== */
+
+.topbar{
+  background:linear-gradient(135deg,#1f5f99,#2e78b7);
+  color:#fff;
+  padding:24px 22px 26px;
+  display:block;
+}
+
+.topbar-content{
+  width:100%;
+}
+
+.topbar .eyebrow{
+  margin:0 0 6px;
+  font-size:13px;
+  font-weight:600;
+  opacity:.92;
+}
+
+.topbar h1{
+  margin:0;
+  font-size:27px;
+  font-weight:800;
+  letter-spacing:-0.5px;
+}
+
+.topbar-desc{
+  margin:9px 0 0;
+  font-size:14px;
+  line-height:1.55;
+  color:rgba(255,255,255,.9);
+}
+
+@media(max-width:430px){
+  .topbar{
+    padding:21px 18px 23px;
+  }
+
+  .topbar h1{
+    font-size:25px;
+  }
+
+  .topbar-desc{
+    font-size:13px;
+  }
+}
