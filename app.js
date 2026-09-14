@@ -98,67 +98,173 @@ function renderServices(){
 document.getElementById('serviceSearch').addEventListener('input',renderServices);
 renderServices();
 
-function floorOrder(name){
-  const map={'지하1층':0,'1층':1,'2층':2,'3층':3,'4층':4};
-  return map[name] ?? 99;
-}
-function renderFloors(){
-  const groups = {};
+/* ===== 층별 청사안내 ===== */
 
-  D.floors.forEach(x => {
-    if (x['층'] && x['공간']) {
+function floorOrder(name){
+  const map={
+    '4층':4,
+    '3층':3,
+    '2층':2,
+    '1층':1,
+    '지하1층':0
+  };
+
+  return map[name] ?? -1;
+}
+
+function floorBadge(name){
+  const map={
+    '4층':'4F',
+    '3층':'3F',
+    '2층':'2F',
+    '1층':'1F',
+    '지하1층':'B1'
+  };
+
+  return map[name] || name;
+}
+
+let activeFloor = '전체';
+
+function renderFloors(){
+
+  const groups={};
+
+  D.floors.forEach(x=>{
+    if(x['층'] && x['공간']){
       (groups[x['층']] ??= []).push(x);
     }
   });
 
-  document.getElementById('floorResults').innerHTML =
-    Object.keys(groups)
-      .sort((a,b) => floorOrder(a) - floorOrder(b))
-      .map(f => {
+  const floors=Object.keys(groups)
+    .sort((a,b)=>floorOrder(b)-floorOrder(a));
 
-        const rows = groups[f].map(x => {
-          const phone = phoneHref(x['대표전화']);
+  /* 층 선택 버튼 */
+  const tabs=`
+    <div class="floor-tabs">
+      <button
+        class="floor-tab ${activeFloor==='전체'?'active':''}"
+        data-floor="전체">
+        전체
+      </button>
 
-          return `
-            <div class="floor-dept-row">
-              <div class="floor-dept-name">${esc(x['공간'])}</div>
+      ${floors.map(f=>`
+        <button
+          class="floor-tab ${activeFloor===f?'active':''}"
+          data-floor="${esc(f)}">
+          ${esc(f)}
+        </button>
+      `).join('')}
+    </div>
+  `;
 
-              <div class="floor-dept-contact">
-                ${
-                  x['대표전화']
-                    ? phone
-                      ? `<a class="floor-phone" href="${phone}">
-                           ☎ ${esc(x['대표전화'])}
-                         </a>`
-                      : `<span class="floor-phone">
-                           ☎ ${esc(x['대표전화'])}
-                         </span>`
-                    : ''
-                }
+  const visibleFloors=
+    activeFloor==='전체'
+      ? floors
+      : floors.filter(f=>f===activeFloor);
 
-                ${
-                  x['팩스']
-                    ? `<span class="floor-fax">
-                         팩스 ${esc(x['팩스'])}
-                       </span>`
-                    : ''
-                }
-              </div>
+  const sections=visibleFloors.map(f=>{
+
+    const items=groups[f];
+
+    const rows=items.map(x=>{
+
+      const phone=phoneHref(x['대표전화']);
+
+      const contactParts=[];
+
+      if(x['대표전화']){
+        contactParts.push(`☎ ${esc(x['대표전화'])}`);
+      }
+
+      if(x['팩스']){
+        contactParts.push(`팩스 ${esc(x['팩스'])}`);
+      }
+
+      const contactText=contactParts.length
+        ? contactParts.join(' / ')
+        : '안내전화 없음';
+
+      return `
+        <div class="floor-space-item">
+
+          <div class="floor-space-info">
+
+            <div class="floor-space-title">
+              ${esc(x['공간'])}
+
+              ${
+                x['비고']
+                  ? `<span class="floor-space-tag">${esc(x['비고'])}</span>`
+                  : ''
+              }
             </div>
-          `;
-        }).join('');
 
-        return `
-          <section class="floor-card">
-            <div class="floor-label">${esc(f)}</div>
-            <div class="floor-content">
-              ${rows}
+            <div class="floor-space-contact">
+              ${contactText}
             </div>
-          </section>
-        `;
-      })
-      .join('');
+
+          </div>
+
+          ${
+            phone
+              ? `<a
+                   class="floor-call-btn"
+                   href="${phone}"
+                   aria-label="${esc(x['공간'])} 전화하기">
+                   ☎
+                 </a>`
+              : ''
+          }
+
+        </div>
+      `;
+    }).join('');
+
+    return `
+      <section class="floor-section">
+
+        <div class="floor-section-head">
+
+          <span class="floor-badge">
+            ${floorBadge(f)}
+          </span>
+
+          <strong>${esc(f)}</strong>
+
+          <span class="floor-count">
+            (${items.length}개 시설 및 공간)
+          </span>
+
+        </div>
+
+        <div class="floor-space-list">
+          ${rows}
+        </div>
+
+      </section>
+    `;
+  }).join('');
+
+  document.getElementById('floorResults').innerHTML=
+    tabs + sections;
+
+  /* 층 버튼 클릭 */
+  document
+    .querySelectorAll('.floor-tab')
+    .forEach(btn=>{
+
+      btn.addEventListener('click',()=>{
+
+        activeFloor=btn.dataset.floor;
+
+        renderFloors();
+
+      });
+
+    });
 }
+
 renderFloors();
 
 function renderContacts(){
