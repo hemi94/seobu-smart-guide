@@ -1509,3 +1509,90 @@ h1{font-size:25px;margin:0}.status-pill{font-size:12px;background:rgba(255,255,2
     font-size:12px;
   }
 }
+/* ===== 업무검색 결과 카드 정리 ===== */
+
+#serviceView .service-card{
+  padding:18px !important;
+  border-radius:18px !important;
+  border:1px solid #dfe8f2 !important;
+  background:#fff !important;
+  box-shadow:0 5px 15px rgba(24,52,82,.06) !important;
+}
+
+/* 카테고리 태그 */
+#serviceView .service-card .tag{
+  margin-bottom:9px !important;
+  padding:5px 9px !important;
+  font-size:12px !important;
+  font-weight:800 !important;
+}
+
+/* 제목 */
+#serviceView .service-card h3{
+  margin:0 0 8px !important;
+  font-size:19px !important;
+  font-weight:850 !important;
+  color:#172033 !important;
+  line-height:1.35;
+}
+
+/* 담당부서·담당팀 */
+#serviceView .service-card .dept{
+  margin-top:0 !important;
+  margin-bottom:8px !important;
+  color:#1768b2 !important;
+  font-size:14px !important;
+  font-weight:800 !important;
+}
+
+/* 주요업무 */
+#serviceView .service-card .detail{
+  margin:7px 0 10px !important;
+  color:#6a7485 !important;
+  font-size:14px !important;
+  line-height:1.55 !important;
+}
+
+/* 위치·전화번호 */
+#serviceView .service-card .meta{
+  display:flex !important;
+  flex-wrap:wrap !important;
+  gap:6px 14px !important;
+  margin-top:8px !important;
+  padding-top:10px !important;
+  border-top:1px solid #edf2f7;
+}
+
+#serviceView .service-card .meta span{
+  font-size:14px !important;
+  font-weight:600 !important;
+  color:#56667a !important;
+}
+
+/* 전화번호는 더 진하게 */
+#serviceView .service-card .meta span:last-child{
+  color:#1768b2 !important;
+  font-size:15px !important;
+  font-weight:850 !important;
+}
+
+/* 버튼 */
+#serviceView .service-card .actions{
+  margin-top:13px !important;
+}
+
+#serviceView .service-card .call-btn{
+  padding:10px 16px !important;
+  min-height:42px;
+  border-radius:11px !important;
+  background:#1f5f99 !important;
+  color:#fff !important;
+  font-size:14px !important;
+  font-weight:800 !important;
+}
+
+/* 마우스 오버 */
+#serviceView .service-card:hover{
+  border-color:#b7d0e8 !important;
+  box-shadow:0 10px 24px rgba(31,95,153,.10) !important;
+}
