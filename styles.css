@@ -1346,3 +1346,122 @@ h1{font-size:25px;margin:0}.status-pill{font-size:12px;background:rgba(255,255,2
     letter-spacing:0;
   }
 }
+/* ===== 상태바 오류 복구 + 최종 크기 ===== */
+
+.phone-status{
+  display:none;
+}
+
+@media (min-width:900px){
+
+  /* 기존 가짜 11:39 제거 */
+  .app-shell::after{
+    content:none !important;
+    display:none !important;
+  }
+
+  /* 실제 상태바 */
+  .phone-status{
+    display:flex !important;
+    position:absolute !important;
+    top:13px !important;
+    left:27px !important;
+    right:25px !important;
+
+    height:30px !important;
+
+    align-items:center !important;
+    justify-content:space-between !important;
+
+    z-index:1100 !important;
+
+    color:#111;
+    font-size:13px;
+    font-weight:800;
+
+    overflow:visible !important;
+    pointer-events:none;
+  }
+
+  #phoneTime{
+    display:block;
+    width:50px;
+    font-size:13px;
+    line-height:1;
+  }
+
+  .phone-status-icons{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:flex-end !important;
+    gap:7px !important;
+
+    width:auto !important;
+    height:20px !important;
+  }
+
+  /* ★ 신호 아이콘 크기 강제 */
+  .phone-status .signal-icon{
+    display:block !important;
+    width:18px !important;
+    height:18px !important;
+    max-width:18px !important;
+    max-height:18px !important;
+
+    fill:#111 !important;
+  }
+
+  /* ★ Wi-Fi 크기 강제 */
+  .phone-status .wifi-icon{
+    display:block !important;
+    width:19px !important;
+    height:19px !important;
+    max-width:19px !important;
+    max-height:19px !important;
+
+    fill:none !important;
+    stroke:#111 !important;
+    stroke-width:2.2 !important;
+    stroke-linecap:round;
+  }
+
+  .phone-status .wifi-icon circle{
+    fill:#111 !important;
+    stroke:none !important;
+  }
+
+  /* 배터리 */
+  .battery-icon{
+    position:relative !important;
+    display:block !important;
+
+    width:24px !important;
+    height:12px !important;
+
+    border:1.7px solid #111;
+    border-radius:3px;
+
+    padding:2px;
+  }
+
+  .battery-icon::after{
+    content:"";
+    position:absolute;
+
+    right:-4px;
+    top:3px;
+
+    width:2px;
+    height:5px;
+
+    background:#111;
+    border-radius:0 2px 2px 0;
+  }
+
+  .battery-level{
+    width:80%;
+    height:100%;
+    background:#111;
+    border-radius:1px;
+  }
+}
