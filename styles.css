@@ -1465,3 +1465,47 @@ h1{font-size:25px;margin:0}.status-pill{font-size:12px;background:rgba(255,255,2
     border-radius:1px;
   }
 }
+/* ===== 업무검색 카테고리 자동 줄바꿈 ===== */
+
+#serviceView .chips{
+  display:flex !important;
+  flex-wrap:wrap !important;
+
+  overflow:visible !important;
+
+  gap:8px !important;
+
+  padding:4px 0 12px !important;
+}
+
+#serviceView .chip{
+  flex:0 0 auto;
+
+  white-space:nowrap;
+
+  padding:8px 12px;
+
+  border-radius:999px;
+
+  font-size:13px;
+}
+
+/* 선택된 카테고리 */
+#serviceView .chip.active{
+  background:#1f5f99;
+  color:#fff;
+  border-color:#1f5f99;
+}
+
+/* 모바일 폭에서 조금 더 촘촘하게 */
+@media(max-width:600px){
+
+  #serviceView .chips{
+    gap:7px !important;
+  }
+
+  #serviceView .chip{
+    padding:7px 10px;
+    font-size:12px;
+  }
+}
